@@ -14,7 +14,7 @@ In this second edition of the challenge, participants were tasked to train model
 
 As in the [previous challenge](https://www.kaggle.com/competitions/synthetic-2-real-object-detection-challenge), the proposed model is based on PyTorch's Region-based Convolutional Neural Network (R-CNN), specifically the [Faster R-CNN](https://www.kaggle.com/competitions/synthetic-2-real-object-detection-challenge) implementation.
 
-A central component of the proposed method is an **augmentation-based regularization** strategy to enhance generalization. Strong data [augmentation techniques](https://docs.pytorch.org/vision/main/transforms.html]), including horizontal and vertical flip, perspective, zooming out, occlusions, color jittering, and resolution scaling, are applied throughout training. Another key aspect of the proposed solution was the use of **ensemble learning** to improve generalization.
+A central component of the proposed method is an **augmentation-based regularization** strategy to enhance generalization. Strong data augmentation techniques, including horizontal and vertical flip, perspective, zooming out, occlusions, color jittering, and resolution scaling, are applied throughout training. Another key aspect of the proposed solution was the use of **ensemble learning** to improve generalization.
 
 Additional highlights of this approach include:
 
