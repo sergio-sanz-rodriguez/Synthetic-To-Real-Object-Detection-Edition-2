@@ -180,7 +180,7 @@ This work demonstrates the effectiveness of combining synthetic data with a robu
 The techniques used are outlined below:
 
 * A significantly larger set of training and validation samples was generated using the Falcon engine software.
-* Very strong augmentation—particularly occlusion—was applied to increase data diversity.
+* Very strong augmentation—particularly occlusions—was applied to increase data diversity.
 * Two models, each optimized for a different objective, were combined using a meta-decision block to leverage the strengths of both approaches.
 * Ensemble learning was employed to improve generalization.
 * An advanced bounding box pruning algorithm was implemented to reduce detection redundancies.
