@@ -4,7 +4,7 @@
 
 By [Sergio Sanz, PhD](https://www.linkedin.com/in/sergio-sanz-rodriguez/).
 
-To download the article, click [here](https://github.com/sergio-sanz-rodriguez/Synthetic-To-Real-Object-Detection/raw/main/2025-04-17_Leveraging_Synthetic_Data_for_Real-World_Object%20Detection.pdf).
+To download the article, click [here](https://github.com/sergio-sanz-rodriguez/Synthetic-To-Real-Object-Detection-Edition-2/raw/main/2025-05-27_Leveraging_Synthetic_Data_for_Real-World_Object%20Detection_2.pdf).
 
 This article outlines the algorithmic solution developed for the [Synthetic to Real Object Detection Challenge - 2nd Edition](https://www.kaggle.com/competitions/synthetic-2-real-object-detection-challenge-2) on Kaggle, organized by [Duality AI](https://www.duality.ai/).
 
