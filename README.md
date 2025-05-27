@@ -37,7 +37,7 @@ Additional highlights of this approach include:
 Compared to the previous challenge (1st Edition), the second edition has turned out to be significantly more difficult. This increased difficulty is primarily due to the simplicity of the training and validation datasets, which contrasts with the complexity of the real-world test dataset. In the first edition, a single Faster R-CNN network was used for object detection. In contrast, the current pipeline is considerably more sophisticated, as illustrated in Figure 1.
 
 <div align="center">
-  <img src="images/model_pipeline.png" alt="DualityAI Logo" width="1000"/>
+  <img src="images/model_pipeline.png" alt="DualityAI Logo" width="800"/>
 </div>
 <div align="center">
   <figcaption>Figure 1: Block diagram of the proposed object detection pipeline.</figcaption>
