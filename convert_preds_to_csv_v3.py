@@ -92,7 +92,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Convert YOLO predictions to Kaggle CSV")
     parser.add_argument("--preds_folder", default="predictions/labels", help="Folder with prediction .txt files")
     parser.add_argument("--output_csv", default="submission.csv", help="Output CSV filename")
-    parser.add_argument("--test_images_folder", default="Synthetic_to_Real_Object_Detection_Full_2/data/test/images", 
+    parser.add_argument("--test_images_folder", default="../Synthetic-To-Real-Object-Detection/Synthetic_to_Real_Object_Detection_Full_2/data/test/images", 
                       help="Path to test images directory")
     args = parser.parse_args()
 

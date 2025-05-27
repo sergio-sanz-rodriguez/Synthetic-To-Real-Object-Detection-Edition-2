@@ -1,7 +1,7 @@
 # Dataset paths
-train: Synthetic_to_Real_Object_Detection_Full_2/data/train/images  # Path to training images
-val: Synthetic_to_Real_Object_Detection_Full_2/data/val/images      # Path to validation images
-test: Synthetic_to_Real_Object_Detection_Full_2/data/test/images    # Path to test images
+train: ../Synthetic-To-Real-Object-Detection/Synthetic_to_Real_Object_Detection_Full_2/data/train/images  # Path to training images
+val: ../Synthetic-To-Real-Object-Detection/Synthetic_to_Real_Object_Detection_Full_2/data/val/images      # Path to validation images
+test: ../Synthetic-To-Real-Object-Detection/Synthetic_to_Real_Object_Detection_Full_2/data/test/images    # Path to test images
 
 # Class information
 nc: 1                     # Number of classes
