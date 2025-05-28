@@ -4,8 +4,6 @@
 
 By [Sergio Sanz, PhD](https://www.linkedin.com/in/sergio-sanz-rodriguez/).
 
-To download the article, click [here](https://github.com/sergio-sanz-rodriguez/Synthetic-To-Real-Object-Detection-Edition-2/raw/main/2025-05-27_Leveraging_Synthetic_Data_for_Real-World_Object%20Detection_2.pdf).
-
 This article outlines the algorithmic solution developed for the [Synthetic to Real Object Detection Challenge - 2nd Edition](https://www.kaggle.com/competitions/synthetic-2-real-object-detection-challenge-2) on Kaggle, organized by [Duality AI](https://www.duality.ai/).
 
 <div align="center">
@@ -29,7 +27,6 @@ Additional highlights of this approach include:
 <div align="center">
   <img src="images/duality_ai_logo_crop.png" alt="DualityAI Logo" width="350"/>
 </div>
-
 
 
 ## The Proposed Pipeline
@@ -185,6 +182,8 @@ The techniques used are outlined below:
 * Ensemble learning was employed to improve generalization.
 * An advanced bounding box pruning algorithm was implemented to reduce detection redundancies.
 * The Faster R-CNN model was selected as the base deep learning architecture, demonstrating outstanding performance on real-world test data and highlighting the potential of simulation-driven approaches in computer vision.
+
+To download the article in PDF, click [here](https://github.com/sergio-sanz-rodriguez/Synthetic-To-Real-Object-Detection-Edition-2/raw/main/2025-05-27_Leveraging_Synthetic_Data_for_Real-World_Object%20Detection_2.pdf).
 
 
 ## Acknowledgments
