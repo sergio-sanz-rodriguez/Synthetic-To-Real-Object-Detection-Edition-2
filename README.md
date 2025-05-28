@@ -4,6 +4,8 @@
 
 By [Sergio Sanz, PhD](https://www.linkedin.com/in/sergio-sanz-rodriguez/).
 
+## 1. Introduction
+
 This article outlines the algorithmic solution developed for the [Synthetic to Real Object Detection Challenge - 2nd Edition](https://www.kaggle.com/competitions/synthetic-2-real-object-detection-challenge-2) on Kaggle, organized by [Duality AI](https://www.duality.ai/).
 
 <div align="center">
@@ -29,7 +31,7 @@ Additional highlights of this approach include:
 </div>
 
 
-## The Proposed Pipeline
+## 2. The Proposed Pipeline
 
 Compared to the previous challenge (1st Edition), the second edition has turned out to be significantly more difficult. This increased difficulty is primarily due to the simplicity of the training and validation datasets, which contrasts with the complexity of the real-world test dataset. In the first edition, a single Faster R-CNN network was used for object detection. In contrast, the current pipeline is considerably more sophisticated, as illustrated in Figure 1.
 
@@ -42,7 +44,7 @@ Compared to the previous challenge (1st Edition), the second edition has turned 
 
 The pipeline consists of two models—Model A and Model B—as well as a Meta-decision stage.
 
-### Model A: Better Generalization
+### 2.1. Model A: Better Generalization
 
 Model A consists of three deep learning models—A1, A2, and A3—that each make predictions on the same input image. Ensemble learning is applied to their outputs to (1) identify the most frequently detected object (majority vote) and (2) select the bounding box (BBox) with the highest confidence score. Model A is specifically designed to improve generalization.
 
@@ -50,17 +52,17 @@ During training, each model path uses a different augmentation strategy to promo
 
 However, Model A often produces bounding boxes with relatively low precision.
 
-### Model B: Bounding Box Refinement
+### 2.2. Model B: Bounding Box Refinement
 
 Model B relies on a single R-CNN network specifically trained to produce high-precision bounding boxes. Notably, removing artificial rotations during the augmentation stage was found to improve both the confidence of the detection scores and the accuracy of the bounding boxes, an effect similar to label smoothing in classification tasks. 
 
 While this model achieves superior localization accuracy, it tends to generalize less effectively than Model A, as it produces a higher number of false positives.
 
-### Meta-decision
+### 2.3. Meta-decision
 
 A meta-decision block is incorporated into the pipeline to combine the outputs of Models A and B, leveraging the strengths of both. If both models detect the same object, the bounding box from Model B is selected due to its higher precision. Otherwise, the bounding box from Model A is used, assuming the test image represents a more challenging case.
 
-## Training and Validation datasets
+## 3. Training and Validation datasets
 
 The default dataset provided for this challenge consists of five sets of images: a baseline dataset and four additional variations differing in lighting conditions, furniture elements, plant presence, and camera distances. However, these datasets are relatively simplistic, as they contain very few surrounding elements that could serve as occlusion factors for the object of interest.
 
@@ -68,7 +70,7 @@ To introduce more occlusion elements, a new dataset was generated using the Falc
 
 To further increase the likelihood of occlusion, some objects from the new dataset were exported in PNG format and randomly overlaid onto the images from the entire dataset during the augmentation stage of the pipeline (see next section). 
 
-## Data Preprocessing: Augmentation
+## 4. Data Preprocessing: Augmentation
 
 For each model, a dedicated data augmentation pipeline is employed to improve generalization. It includes a variety of image transformations such as resolution scaling, color jittering, horizontal flipping, vertical flipping, perspective, rotation, zooming out, and—most notably—occlusions. A large number of occlusions are introduced to simulate edge cases (see Figure 2).
 
@@ -82,19 +84,19 @@ Occlusions are applied by randomly overlaying colored circles and rectangles of 
 </div>
 
 
-## Object Detection Model: Faster R-CNN
+## 5. Object Detection Model: Faster R-CNN
 
 **Faster R-CNN** was selected as the object detection architecture due to its strong balance between accuracy and efficiency. It is widely recognized for delivering state-of-the-art performance across various object detection tasks, leveraging a two-stage detection pipeline. This model contains 43.2 million parameters and has a size of 173.4 MB.
 
 The model mainly consists of two stages: Region Proposal Network (RPN), and classification and bounding box regression. These stages are briefly described in the next subsections.
 
-### Region Proposal Network (RPN)
+### 5.1. Region Proposal Network (RPN)
 
 The first stage involves scanning the image to identify regions (i.e., bounding boxes) that are likely to contain objects. This step estimates objectness, which is the probability that a given region contains an object rather than background.
 
 Feature extraction for this stage is performed using the ResNet50_FPN_v2  backbone.
 
-### Classification and Bounding Box Regression
+### 5.2. Classification and Bounding Box Regression
 
 Once the Regions of Interest (RoI) are proposed by the RPN, the second stage classifies the content of each region (e.g., pedestrian, dog, table, book, Cheerios box) and refines the coordinates of the bounding boxes. The figure below shows a block diagram of the Faster R-CNN architecture.
 
@@ -105,7 +107,7 @@ Once the Regions of Interest (RoI) are proposed by the RPN, the second stage cla
   <figcaption>Figure 3: Block diagram of the Faster R-CNN architecture. Source: R. Girshick, et al. "Rich Feature Hierarchies for Accurate Object Detection and Semantic Segmentation," 2014 IEEE Conference on Computer Vision and Pattern Recognition, June 2014.</figcaption>
 </div>
 
-## Bounding Box Pruning
+## 6. Bounding Box Pruning
 
 Each R-CNN model may generate multiple bounding box candidates for a single image, some of which may correspond to the same object or to different parts of it. To produce cleaner outputs, a post-processing step is applied to remove low-confidence and redundant detections.
 
@@ -119,14 +121,14 @@ This stage aims to retain, for each model, only the most reliable bounding box b
 
 4. **Score-based final selection:** If multiple boxes still remain after the above steps, the one with the highest confidence score is selected. This final step is especially relevant when it is known beforehand that at most one object of a given class is present in the image, as is the case in this challenge.
 
-## Best Candidate Selection
+## 7. Best Candidate Selection
 
 As shown in Figure 1, each model path in Model A proposes its own best bounding box candidate. In the final stage, the pipeline selects the overall winner by choosing the candidate with the highest confidence score associated with the most frequently detected object.
 
 The outputs of Models A and B are then combined using a simple meta-decision rule: if the bounding boxes point to different objects, the decision favors Model A due to its better generalization; otherwise, Model B is chosen to refine the bounding box boundaries.
 
 
-## Training and Cross-Validation
+## 8. Training and Cross-Validation
 
 The deep learning models were trained and cross-validated using the PyTorch framework with the following configuration:
 
@@ -142,7 +144,7 @@ The deep learning models were trained and cross-validated using the PyTorch fram
 
 Note that, in the experiments, Model B uses the same augmentation pipeline as A2, except it excludes rotation.
 
-### Loss Function
+### 8.1. Loss Function
 
 The Faster R-CNN model returns a dictionary containing the following loss components:
 
@@ -156,7 +158,7 @@ The Faster R-CNN model returns a dictionary containing the following loss compon
 
 The overall loss used for training and cross-validation is the sum of these individual components.
 
-## Experimental Results
+## 9. Experimental Results
 
 The proposed pipeline was evaluated on the test dataset provided by Duality AI as part of this Kaggle competition. Model performance was measured using the [Mean Average Precision](https://www.v7labs.com/blog/mean-average-precision) at IoU threshold 0.50 (mAP@50).
 
@@ -170,7 +172,7 @@ Figure 4 presents representative examples demonstrating the performance of the p
 </div>
 
 
-## Conclusion
+## 10. Conclusion
 
 This work demonstrates the effectiveness of combining synthetic data with a robust object detection architecture and strong data augmentation techniques to address challenging, real-world object detection tasks.
 
@@ -186,6 +188,6 @@ The techniques used are outlined below:
 To download the article in PDF, click [here](https://github.com/sergio-sanz-rodriguez/Synthetic-To-Real-Object-Detection-Edition-2/raw/main/2025-05-27_Leveraging_Synthetic_Data_for_Real-World_Object%20Detection_2.pdf).
 
 
-## Acknowledgments
+## 11. Acknowledgments
 
 I would like to thank [Duality AI](https://www.duality.ai/) for organizing this amazing competition, and to all participants whose involvement pushed me to consistently enhance the performance of the proposed solution.
