@@ -132,15 +132,15 @@ The outputs of Models A and B are then combined using a simple meta-decision rul
 
 The deep learning models were trained and cross-validated using the PyTorch framework with the following configuration:
 
-* Learning rate: 1e-5.
-* Batch size: 4.
-* Number of epochs: 30.
-* Optimizer: AdamW (weight decay: 0.01, betas: 0.9, 0.999).
-* Scheduler: CosineAnnealingLR (eta_min: 1e-7).
-* Augmentation A1 (Model A1): resolution scaling, horizontal flip, vertical flip, rotation, zoom out, color jitter, up to 5 occlusions simultaneously.
-* Augmentation A2 (Model A2): resolution scaling, horizontal flip, vertical flip, rotation, zoom out, color jitter, , up to 7 occlusions simultaneously.
-* Augmentation A3 (Model A3): resolution scaling, horizontal flip, vertical flip, rotation, perspective, zoom out, color jitter, up to 8 occlusions simultaneously.
-* Augmentation B (Model B): resolution scaling, horizontal flip, vertical flip, zoom out, color jitter, , up to 7 occlusions simultaneously.
+* **Learning rate:** 1e-5.
+* **Batch size:** 4.
+* **Number of epochs:** 30.
+* **Optimizer:** AdamW (weight decay: 0.01, betas: 0.9, 0.999).
+* **Scheduler:** CosineAnnealingLR (eta_min: 1e-7).
+* **Augmentation A1 (Model A1):** resolution scaling, horizontal flip, vertical flip, rotation, zoom out, color jitter, up to 5 occlusions simultaneously.
+* **Augmentation A2 (Model A2):** resolution scaling, horizontal flip, vertical flip, rotation, zoom out, color jitter, , up to 7 occlusions simultaneously.
+* **Augmentation A3 (Model A3):** resolution scaling, horizontal flip, vertical flip, rotation, perspective, zoom out, color jitter, up to 8 occlusions simultaneously.
+* **Augmentation B (Model B):** resolution scaling, horizontal flip, vertical flip, zoom out, color jitter, , up to 7 occlusions simultaneously.
 
 Note that, in the experiments, Model B uses the same augmentation pipeline as A2, except it excludes rotation.
 
