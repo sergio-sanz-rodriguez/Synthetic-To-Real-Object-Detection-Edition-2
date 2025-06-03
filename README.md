@@ -1,4 +1,4 @@
-![Hyperspectral AI Banner](images/object_detection_heading.png)
+![Hyperspectral AI Banner](images/object_detection_heading_yellow.png)
 
 # Leveraging Synthetic Data for Real-World Object Detection - 2nd Edition
 
@@ -165,7 +165,7 @@ The proposed pipeline was evaluated on the test dataset provided by Duality AI a
 Figure 4 shows representative examples demonstrating the performance of the proposed model, which achieved perfect object detection. The model obtained **the highest possible score of 1.0** on the leaderboard.
 
 <div align="center">
-  <img src="images/object_detection_results.png" alt="Object detection results" width="650"/>
+  <img src="images/object_detection_results_yellow.png" alt="Object detection results" width="650"/>
 </div>
 <div align="center">
   <figcaption>Figure 4: Inference examples exhibiting the performance of the proposed object detection model.</figcaption>
