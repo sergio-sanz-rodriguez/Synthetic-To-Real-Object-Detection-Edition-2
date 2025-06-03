@@ -160,9 +160,9 @@ The overall loss used for training and cross-validation is the sum of these indi
 
 ## 9. Experimental Results
 
-The proposed pipeline was evaluated on the test dataset provided by Duality AI as part of this Kaggle competition. Model performance was measured using the [Mean Average Precision](https://www.v7labs.com/blog/mean-average-precision) at IoU threshold 0.50 (mAP@50).
+The proposed pipeline was evaluated on the test dataset provided by Duality AI as part of the Kaggle competition. Model performance was assessed using the [Mean Average Precision](https://www.v7labs.com/blog/mean-average-precision) at IoU threshold 0.50 (mAP@50).
 
-Figure 4 presents representative examples demonstrating the performance of the proposed model, which achieved perfect object detection. The model achieved the maximum score of **1.0 (100% detection)** on the leaderboard.
+Figure 4 shows representative examples demonstrating the performance of the proposed model, which achieved perfect object detection. The model obtained **the highest possible score of 1.0** on the leaderboard.
 
 <div align="center">
   <img src="images/object_detection_results.png" alt="Object detection results" width="650"/>
