@@ -24,7 +24,7 @@ Additional highlights of this approach include:
 
 * No pseudo-labeling: The model was trained solely on the labeled synthetic data provided in the competition.
 
-* Pre-trained backbone: A Faster R-CNN model leveraging a pre-trained backbone was fine-tuned on the synthetic Cheerios box dataset provided in the competition.
+* Pre-trained backbone: A Faster R-CNN model leveraging a pre-trained backbone was fine-tuned on the synthetic dataset provided in the competition.
 
 <div align="center">
   <img src="images/duality_ai_logo_crop.png" alt="DualityAI Logo" width="350"/>
